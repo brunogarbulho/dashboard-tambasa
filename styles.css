@@ -78,6 +78,33 @@ body {
   color: var(--muted);
 }
 
+.hero-links {
+  margin-top: 0.8rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.hero-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.52rem 0.78rem;
+  border-radius: 10px;
+  border: 1px solid rgba(34, 211, 238, 0.5);
+  background: rgba(34, 211, 238, 0.12);
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: transform 0.16s ease, border-color 0.2s ease;
+}
+
+.hero-link:hover,
+.hero-link:focus {
+  transform: translateY(-1px);
+  border-color: rgba(56, 189, 248, 0.9);
+}
+
 .badge {
   margin: 0;
   width: fit-content;

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ciclo de Fechamento de Pacote - Tambasa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./ciclo-pacote-tambasa.css" />
+  </head>
+  <body>
+    <div class="bg-glow bg-glow-a"></div>
+    <div class="bg-glow bg-glow-b"></div>
+
+    <main class="container cycle-page">
+      <header class="hero cycle-hero">
+        <p class="badge">Fluxo operacional</p>
+        <h1>Ciclo de fechamento do pacote</h1>
+        <p class="subtitle">Etapas obrigatorias com revisao antes de incluir no organograma.</p>
+        <div class="hero-actions">
+          <a class="btn btn-ghost" href="./index.html">Voltar ao dashboard</a>
+        </div>
+      </header>
+
+      <section class="card">
+        <div class="section-header">
+          <h2>Cadastro da etapa</h2>
+          <span class="step-badge" id="sequencialBadge">Etapa 1</span>
+        </div>
+
+        <form id="stepForm" class="step-form" novalidate>
+          <div class="form-grid">
+            <label>
+              Setor
+              <input type="text" name="setor" maxlength="100" required />
+            </label>
+
+            <label>
+              Nivel do processo
+              <select name="nivel" required>
+                <option value="">Selecione</option>
+                <option value="Inicial">Inicial</option>
+                <option value="Intermediario">Intermediario</option>
+                <option value="Final">Final</option>
+              </select>
+            </label>
+
+            <label>
+              Responsavel (nome)
+              <input type="text" name="responsavelNome" maxlength="80" required />
+            </label>
+
+            <label>
+              Responsavel (contato)
+              <input type="text" name="responsavelContato" maxlength="80" required />
+            </label>
+
+            <label>
+              Descricao do processo (titulo)
+              <input type="text" name="descricaoTitulo" maxlength="120" required />
+            </label>
+
+            <label class="field-wide">
+              Descricao do processo (explicacao)
+              <textarea name="descricaoExplicacao" maxlength="400" rows="3" required></textarea>
+            </label>
+
+            <label>
+              Peso de solucao CD
+              <input type="number" name="pesoCd" min="0" max="100000" step="0.01" required />
+            </label>
+
+            <label>
+              Peso de solucao Tambasa
+              <input type="number" name="pesoTambasa" min="0" max="100000" step="0.01" required />
+            </label>
+
+            <label>
+              Tempo previsto (horas)
+              <input type="number" name="tempoHoras" min="0.1" max="10000" step="0.1" required />
+            </label>
+
+            <label class="field-wide">
+              Notas importantes
+              <textarea name="notas" maxlength="500" rows="3" required></textarea>
+            </label>
+          </div>
+
+          <p id="formFeedback" class="form-feedback hidden" aria-live="polite"></p>
+
+          <div class="form-actions">
+            <button type="button" class="btn btn-secondary" id="clearDraftButton">Limpar</button>
+            <button type="button" class="btn btn-primary" id="openConfirmButton">Confirmar etapa</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="kpi-grid">
+        <article class="card kpi">
+          <span class="kpi-label">Total de etapas ativas</span>
+          <strong id="kpiTotalEtapas">0</strong>
+        </article>
+        <article class="card kpi">
+          <span class="kpi-label">Tempo total previsto</span>
+          <strong id="kpiTotalHoras">0,0 h</strong>
+        </article>
+      </section>
+
+      <section class="card organograma">
+        <div class="section-header">
+          <h2>Organograma do ciclo</h2>
+          <span class="kpi-label">Atualizacao em tempo real</span>
+        </div>
+        <div id="organogramaColumns" class="organograma-columns" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <div id="confirmModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+      <div class="modal-card">
+        <h2 id="confirmTitle">Revisar etapa</h2>
+        <p class="chart-note">Confira os dados antes de incluir no organograma.</p>
+        <div id="confirmContent" class="confirm-content"></div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-ghost" id="backToEditButton">Editar</button>
+          <button type="button" class="btn btn-primary" id="confirmSaveButton">Confirmar inclusao</button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="./ciclo-pacote-tambasa.js"></script>
+  </body>
+</html>

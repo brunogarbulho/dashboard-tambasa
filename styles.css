@@ -1,0 +1,243 @@
+:root {
+  --bg: #0b1020;
+  --card: rgba(15, 23, 42, 0.78);
+  --card-border: rgba(148, 163, 184, 0.2);
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --primary: #22d3ee;
+  --secondary: #f97316;
+  --accent: #a855f7;
+  --success: #34d399;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: radial-gradient(circle at 20% 20%, #1e1b4b 0%, var(--bg) 40%);
+  color: var(--text);
+  min-height: 100vh;
+  position: relative;
+}
+
+.hero {
+  background: linear-gradient(
+    110deg,
+    rgba(56, 189, 248, 0.18),
+    rgba(168, 85, 247, 0.12),
+    rgba(249, 115, 22, 0.16)
+  );
+  border: 1px solid rgba(125, 211, 252, 0.2);
+  border-radius: 18px;
+  padding: 1.2rem;
+}
+
+.bg-glow {
+  position: fixed;
+  border-radius: 999px;
+  filter: blur(60px);
+  opacity: 0.35;
+  z-index: -1;
+}
+
+.bg-glow-a {
+  width: 280px;
+  height: 280px;
+  background: #06b6d4;
+  top: -70px;
+  right: 5%;
+}
+
+.bg-glow-b {
+  width: 320px;
+  height: 320px;
+  background: #f97316;
+  bottom: -90px;
+  left: 4%;
+}
+
+.container {
+  width: min(1200px, 92%);
+  margin: 0 auto;
+  padding: 2.2rem 0 3rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.hero h1 {
+  margin: 0.4rem 0;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  line-height: 1.12;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--muted);
+}
+
+.badge {
+  margin: 0;
+  width: fit-content;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(34, 211, 238, 0.4);
+  color: var(--primary);
+  background: rgba(34, 211, 238, 0.1);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 1rem 1.1rem;
+  backdrop-filter: blur(10px);
+}
+
+.filters {
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.25);
+}
+
+h2 {
+  margin: 0 0 0.8rem;
+  font-size: 1rem;
+}
+
+.filter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 0.8rem;
+}
+
+label {
+  display: grid;
+  gap: 0.4rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+select {
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  border-radius: 10px;
+  background: rgba(15, 23, 42, 0.9);
+  color: var(--text);
+  padding: 0.65rem 0.7rem;
+  outline: none;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+select:hover,
+select:focus {
+  border-color: var(--primary);
+  transform: translateY(-1px);
+}
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.8rem;
+}
+
+.kpi {
+  display: grid;
+  gap: 0.35rem;
+  box-shadow: inset 0 1px 0 rgba(226, 232, 240, 0.1),
+    0 10px 22px rgba(2, 6, 23, 0.35);
+}
+
+.kpi-label {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.kpi strong {
+  font-size: clamp(1.1rem, 2.5vw, 1.7rem);
+  color: #fff;
+  text-shadow: 0 0 20px rgba(56, 189, 248, 0.35);
+}
+
+.chart-panel {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.chart-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.chart-box {
+  position: relative;
+  height: 320px;
+}
+
+.chart-box canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.hidden {
+  display: none;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 0.62rem;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+  font-size: 0.88rem;
+}
+
+th {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+tbody tr:hover {
+  background: rgba(56, 189, 248, 0.08);
+}
+
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 6, 23, 0.8);
+  display: grid;
+  place-items: center;
+  text-align: center;
+  gap: 0.8rem;
+}
+
+.loader {
+  width: 42px;
+  aspect-ratio: 1;
+  border: 4px solid rgba(148, 163, 184, 0.3);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 980px) {
+  .chart-box {
+    height: 260px;
+  }
+}
